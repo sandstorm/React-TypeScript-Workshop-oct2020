@@ -35,9 +35,9 @@ const TodoList = () => {
 
             <input id="filterCompleted" type="checkbox" checked={isCompletedFilterActive} onChange={handleIsCompletedFilterActiveChange} />
             <label htmlFor="filterCompleted">Filter Completed TODOs</label>
-
+            <hr />
+            <label htmlFor="filterTitle">Filter title: </label>
             <input id="filterTitle" type="text" value={filterText} onChange={handleFilterTextChange} />
-            <label htmlFor="filterTitle">Filter title</label>
             
             <ul className="todo-list__list">
                 {todos.map(todo => <li key={todo.id}>{todo.title}</li>)}

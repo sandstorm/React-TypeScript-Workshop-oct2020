@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.App nav ul {
+  display: flex;
+  
+}
+
+.App nav li {
+  list-style: none;
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.App nav li:hover {
+  background-color: white;
+}
+
+.App nav li a {
+  padding: 16px 8px;
+  text-decoration: none;
+}
