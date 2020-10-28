@@ -1,21 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import ComponentWithChildren from './ComponentWithChildren';
-import Counter from './Counter';
 import Intro from './Intro';
-import List from './List';
 
 function App() {
+  const [text, setText] = useState('Hallo Welt')
+  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <Counter stepSize={1} />
-        <Counter stepSize={10} />
         <Intro title="React + TypeScript - Workshop" />
-        <ComponentWithChildren>
-          <p>Foo</p>
-        </ComponentWithChildren>
-        <List />
+        
+        <h2>Controlled Input</h2>
+        <input type="text" value={text} onChange={handleTextChange} />
+        <p>Text: {text}</p>
       </header>
     </div>
   );
