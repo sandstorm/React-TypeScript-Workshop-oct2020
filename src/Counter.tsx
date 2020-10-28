@@ -1,24 +1,18 @@
-import React, {useState} from 'react'
+import React from 'react'
+import {useCounter} from './useCounter'
 
 type Props = {
+  stepSize: number
 }
 
-const Counter = ({}: Props) => {
-  const [counter, setCounter] = useState(0)
-
-  const subtract = () => {
-    if (counter > 0) {
-      setCounter(counter - 1)
-    }else {
-      setCounter(0)
-    }
-  }
+const Counter = ({ stepSize }: Props) => {
+  const { counter, increase, decrease } = useCounter(0, stepSize)
 
   return (
     <div>
       <p>{counter}</p>
-      <button onClick={() => setCounter(counter + 1)}>Increase</button>
-      <button onClick={subtract}>Decrease</button>
+      <button onClick={increase}>Increase</button>
+      <button onClick={decrease}>Decrease</button>
     </div>
   )
 }

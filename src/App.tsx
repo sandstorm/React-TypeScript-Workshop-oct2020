@@ -9,7 +9,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Counter />
+        <Counter stepSize={1} />
+        <Counter stepSize={10} />
         <Intro title="React + TypeScript - Workshop" />
         <ComponentWithChildren>
           <p>Foo</p>
