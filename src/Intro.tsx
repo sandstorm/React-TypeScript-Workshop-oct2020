@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {FC} from 'react'
 
-function Intro() {
+type Props = {
+    title: string
+}
+
+const Intro: FC<Props> = (props) => {
     return (
-        <div className="intro">
-            <h1>React + TypeScript - Workshop</h1>
+        <>
+            {/* TODO: this is a comment in JSX */}
+            <h1>{props.title}</h1>
             <p>Never Stop Learning!</p>
-        </div>
+        </>
     )
 }
 
