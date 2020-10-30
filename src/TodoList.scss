@@ -1,0 +1,22 @@
+.todo-list {
+    text-align: left;
+
+    & li {
+        list-style-type: circle;
+    }
+
+    &-item {
+        display: flex;
+        align-items: baseline;
+    }
+
+    &-item__text {
+        margin-left: 8px;
+        transition: all .2s;
+
+        &--completed {
+            text-decoration: line-through;
+            opacity: .5;
+        }
+    }
+}

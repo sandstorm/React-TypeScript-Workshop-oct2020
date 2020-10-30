@@ -1,6 +1,7 @@
+import {set} from 'immutable'
 import React, {useEffect, useState} from 'react'
 import {Todo, todoApiEndpoint} from './Domain/Todo'
-import './TodoList.css'
+import './TodoList.scss'
 
 const TodoList = () => {
     const [todoList, setTodoList] = useState<Array<Todo>>([])
@@ -13,6 +14,12 @@ const TodoList = () => {
 
     const handleFilterTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (event) => {
         setFilterText(event.target.value)
+    }
+
+    const handleTodoCompletedChange = (todo: Todo) => {
+        const index = todoList.findIndex(item => item.id === todo.id)
+        // use ImmutableJS `set()` to update todoList in a simple, immutable way
+        setTodoList(set(todoList, index, {...todo, completed: !todo.completed}))
     }
 
     useEffect(() => {
@@ -39,8 +46,13 @@ const TodoList = () => {
             <label htmlFor="filterTitle">Filter title: </label>
             <input id="filterTitle" type="text" value={filterText} onChange={handleFilterTextChange} />
             
-            <ul className="todo-list__list">
-                {todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
+            <ul className="todo-list">
+                {todos.map(todo => (
+                    <li className="todo-list-item" key={todo.id}>
+                        <input type="checkbox" checked={todo.completed} onChange={() => {handleTodoCompletedChange(todo)}} />
+                        <span className={`todo-list-item__text${todo.completed ? ' todo-list-item__text--completed' : ''}`}>{todo.title}</span>
+                    </li>
+                ))}
             </ul>
         </div>
     )
